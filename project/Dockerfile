@@ -18,6 +18,7 @@ RUN addgroup --system worker && adduser --system --group worker        # run con
 COPY --chown=worker:worker pyproject.toml ./poetry.lock /app/
 
 # install python dependencies
+RUN pip install flake8==6.0.0                                         # poetry throwing error so using pip for flake8
 RUN pip install poetry && pip install "poetry==$POETRY_VERSION"
 RUN poetry install
 
